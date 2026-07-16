@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правила чата</title>
+    <style>
+        /* ——— Общий фон ——— */
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #0b0b0f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            padding: 20px;
+        }
+
+        /* ——— Карточка с неоновой обводкой ——— */
+        .container {
+            max-width: 780px;
+            width: 100%;
+            background: #12121a;
+            padding: 40px 45px;
+            border-radius: 32px;
+            border: 2px solid rgba(255, 0, 150, 0.4);
+            box-shadow:
+                0 0 25px rgba(255, 0, 150, 0.3),
+                0 0 60px rgba(0, 200, 255, 0.15),
+                inset 0 0 30px rgba(255, 0, 200, 0.05);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            color: #eaeef2;
+        }
+
+        /* Анимация перелива RGB */
+        @keyframes rgbBorder {
+            0%   { border-color: rgba(255, 0, 150, 0.6); box-shadow: 0 0 30px rgba(255, 0, 150, 0.4); }
+            33%  { border-color: rgba(0, 255, 200, 0.6); box-shadow: 0 0 30px rgba(0, 255, 200, 0.4); }
+            66%  { border-color: rgba(100, 100, 255, 0.6); box-shadow: 0 0 30px rgba(100, 100, 255, 0.4); }
+            100% { border-color: rgba(255, 0, 150, 0.6); box-shadow: 0 0 30px rgba(255, 0, 150, 0.4); }
+        }
+        .container {
+            animation: rgbBorder 4s infinite ease-in-out;
+        }
+
+        /* ——— Заголовок ——— */
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            text-align: center;
+            margin: 0 0 6px 0;
+            background: linear-gradient(90deg, #ff00a0, #7000ff, #00d4ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 5s ease infinite;
+            letter-spacing: 1px;
+            text-shadow: 0 0 40px rgba(255, 0, 200, 0.2);
+        }
+        @keyframes gradientShift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8888aa;
+            font-size: 1rem;
+            margin-top: -6px;
+            margin-bottom: 32px;
+            letter-spacing: 2px;
+            font-weight: 300;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 16px;
+        }
+
+        /* ——— Список правил ——— */
+        ol {
+            padding: 0;
+            list-style: none;
+            counter-reset: rule-counter;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        li {
+            counter-increment: rule-counter;
+            font-size: 1.1rem;
+            padding: 16px 20px 16px 60px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(4px);
+            position: relative;
+            transition: 0.25s ease;
+            line-height: 1.5;
+            color: #d0d7e6;
+        }
+
+        /* Номер правила — неоновый */
+        li::before {
+            content: counter(rule-counter);
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #ff00a0;
+            text-shadow: 0 0 12px rgba(255, 0, 160, 0.6);
+            width: 28px;
+            text-align: center;
+        }/* Подсветка при наведении */
+        li:hover {
+            background: rgba(255, 0, 150, 0.08);
+            border-color: rgba(255, 0, 200, 0.25);
+            box-shadow: 0 0 25px rgba(255, 0, 150, 0.08);
+            transform: scale(1.01);
+        }
+
+        /* ——— Футер ——— */
+        .footer {
+            margin-top: 36px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #555577;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 20px;
+            letter-spacing: 1px;
+        }
+        .footer span {
+            color: #ff00a0;
+            text-shadow: 0 0 10px rgba(255, 0, 160, 0.3);
+        }
+
+        /* ——— Адаптив под телефон ——— */
+        @media (max-width: 550px) {
+            .container { padding: 24px 18px; }
+            h1 { font-size: 2rem; }
+            li { padding: 14px 14px 14px 50px; font-size: 1rem; }
+            li::before { left: 10px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>⚡ ПРАВИЛА</h1>
+        <p class="subtitle">▼ CHAT RULES ▼</p>
+
+        <ol>
+            
+            <li>1. Незнание правил не освобождает от наказания. С момента вступления в группу вы автоматически признаёте все установленные нормы.</li>
+            <li>2. Запрет на спам. Под спамом понимается многократная отправка одинаковых или бессмысленных сообщений, стикерами, GIF, медиа и командами ботов. Простое активное общение и отправка нескольких сообщений подряд не считается нарушением, если они несут смысл. Наказание выдаётся только в случаях явного злоупотребления.</li>
+            <li>6. Личная информация. Категорически запрещено распространять чужие личные данные без явного согласия владельца.</li>
+            <li>7. Запрещены любые формы пропаганды наркотиков, алкоголя, табака и других запрещённых веществ.</li>
+            <li>8. Запрещены любые формы пропаганды насилия, терроризма, экстремизма и радикальных идеологий.</li>
+            <li>9.  Уважение к чату. Провокации, троллинг, подрыв атмосферы — нарушение с мгновенным наказанием.</li>
+            <li>10. Решения администрации. Решение администрации окончательное и обжалованию не подлежит. Попытка спорить — нарушение.</li>   
+        </ol>
+
+        <div class="footer">
+            © 2026 <span>Ваш чат</span>. Все права защищены.
+    </div>
+
+</body>
+</html>
